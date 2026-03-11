@@ -2,12 +2,13 @@
 import Display from './components/Display.vue'
 import ButtonGrid from './components/ButtonGrid.vue'
 import { ref } from 'vue'
+import type { Operator } from './types'
 
 const display = ref('0')
 const firstNumber = ref('')
-const operator = ref('')
+const operator = ref<Operator>('')
 
-function handleNumber(num: string) {
+function handleNumber(num: string): void {
   if (num === '.' && display.value.includes('.')) return
   if (display.value === '0') {
     display.value = num
@@ -16,13 +17,13 @@ function handleNumber(num: string) {
   }
 }
 
-function handleOperator(op: string) {
+function handleOperator(op: Operator): void {
   firstNumber.value = display.value
   operator.value = op
   display.value = '0'
 }
 
-function handleEquals() {
+function handleEquals(): void {
   const a = parseFloat(firstNumber.value)
   const b = parseFloat(display.value)
   let result = 0
@@ -45,13 +46,13 @@ function handleEquals() {
   operator.value = ''
 }
 
-function handleClear() {
+function handleClear(): void {
   display.value = '0'
   firstNumber.value = ''
   operator.value = ''
 }
 
-function handleBackspace() {
+function handleBackspace(): void {
   if (display.value.length === 1) {
     display.value = '0'
   } else {
@@ -61,24 +62,9 @@ function handleBackspace() {
 </script>
 
 <template>
-  <div class="calculator">
+  <div class="w-72 mx-auto mt-24 border border-gray-300 p-5 rounded-lg">
     <Display :value="display" />
-    <ButtonGrid
-      @number="handleNumber"
-      @operator="handleOperator"
-      @equals="handleEquals"
-      @clear="handleClear"
-      @backspace="handleBackspace"
-    />
+    <ButtonGrid @number="handleNumber" @operator="handleOperator" @equals="handleEquals" @clear="handleClear"
+      @backspace="handleBackspace" />
   </div>
 </template>
-
-<style scoped>
-.calculator {
-  width: 300px;
-  margin: 100px auto;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 8px;
-}
-</style>

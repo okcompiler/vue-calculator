@@ -1,22 +1,10 @@
 <script setup lang="ts">
-const props = defineProps<{ value: string }>()
+defineProps<{ value: string }>()
 </script>
 
 <template>
-<div class="display">{{ value }}</div>
+  <div
+    class="bg-gray-800 text-white text-right px-4 py-3 text-3xl rounded mb-3 overflow-hidden text-ellipsis whitespace-nowrap">
+    {{ value }}
+  </div>
 </template>
-
-<style scoped>
-.display {
-  background: #222;
-  color: white;
-  text-align: right;
-  padding: 10px;
-  font-size: 2em;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-</style>
