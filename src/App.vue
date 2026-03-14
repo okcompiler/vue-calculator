@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import Display from './components/Display.vue'
 import ButtonGrid from './components/ButtonGrid.vue'
+import DarkModeToggle from './components/DarkModeToggle.vue'
 import { ref } from 'vue'
 import type { Operator } from './types'
 
-const display = ref('0')
-const firstNumber = ref('')
-const operator = ref<Operator>('')
+const display = ref('0');
+const firstNumber = ref('');
+const operator = ref<Operator>('');
+const isDark = ref(false);
+
+function toggleDark() {
+  isDark.value = !isDark.value;
+  document.documentElement.classList.toggle('dark')
+}
 
 function handleNumber(num: string): void {
   if (num === '.' && display.value.includes('.')) return
@@ -62,9 +69,12 @@ function handleBackspace(): void {
 </script>
 
 <template>
-  <div class="w-72 mx-auto mt-24 border border-gray-300 p-5 rounded-lg">
-    <Display :value="display" />
-    <ButtonGrid @number="handleNumber" @operator="handleOperator" @equals="handleEquals" @clear="handleClear"
-      @backspace="handleBackspace" />
+  <div class="flex flex-col items-center mt-24 gap-4">
+    <DarkModeToggle :isDark="isDark" @toggle="toggleDark" />
+    <div class="w-72 mx-auto border border-gray-300 p-5 rounded-lg">
+      <Display :value="display" />
+      <ButtonGrid @number="handleNumber" @operator="handleOperator" @equals="handleEquals" @clear="handleClear"
+        @backspace="handleBackspace" />
+    </div>
   </div>
 </template>

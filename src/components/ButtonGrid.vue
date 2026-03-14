@@ -8,6 +8,10 @@ const emit = defineEmits<{
   clear: []
   backspace: []
 }>()
+
+const numBtnClass = "dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:bg-gray-600 p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200";
+const opBtnClass = "dark:bg-blue-700 dark:border-blue-600 dark:text-white dark:hover:bg-blue-600 p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-400 hover:bg-gray-500";
+const equalsBtnClass = "dark:bg-yellow-500 dark:text-white p-4 text-xl cursor-pointer rounded border border-yellow-500 bg-yellow-400 hover:bg-yellow-500 text-white";
 </script>
 
 <template>
@@ -15,41 +19,25 @@ const emit = defineEmits<{
     <button @click="emit('clear')"
       class="p-4 text-xl cursor-pointer rounded border col-span-2 bg-red-500 text-white border-red-500 hover:bg-red-600">C</button>
     <button @click="emit('backspace')"
-      class="col-span-2 p-4 text-xl cursor-pointer rounded border bg-gray-500 text-white border-gray-500 hover:bg-gray-600">⌫</button>
-    <button @click="emit('number', '7')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">7</button>
-    <button @click="emit('number', '8')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">8</button>
-    <button @click="emit('number', '9')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">9</button>
-    <button @click="emit('operator', '/')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">/</button>
+      class="dark:border-white col-span-2 p-4 text-xl cursor-pointer rounded bg-gray-500 text-white border border-black hover:bg-gray-600">⌫</button>
+    <button @click="emit('number', '7')" :class="numBtnClass">7</button>
+    <button @click="emit('number', '8')" :class="numBtnClass">8</button>
+    <button @click="emit('number', '9')" :class="numBtnClass">9</button>
+    <button @click="emit('operator', '/')" :class="opBtnClass">/</button>
 
-    <button @click="emit('number', '4')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">4</button>
-    <button @click="emit('number', '5')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">5</button>
-    <button @click="emit('number', '6')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">6</button>
-    <button @click="emit('operator', '*')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">*</button>
+    <button @click="emit('number', '4')" :class="numBtnClass">4</button>
+    <button @click="emit('number', '5')" :class="numBtnClass">5</button>
+    <button @click="emit('number', '6')" :class="numBtnClass">6</button>
+    <button @click="emit('operator', '*')" :class="opBtnClass">*</button>
 
-    <button @click="emit('number', '1')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">1</button>
-    <button @click="emit('number', '2')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">2</button>
-    <button @click="emit('number', '3')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">3</button>
-    <button @click="emit('operator', '-')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">-</button>
+    <button @click="emit('number', '1')" :class="numBtnClass">1</button>
+    <button @click="emit('number', '2')" :class="numBtnClass">2</button>
+    <button @click="emit('number', '3')" :class="numBtnClass">3</button>
+    <button @click="emit('operator', '-')" :class="opBtnClass">-</button>
 
-    <button @click="emit('number', '0')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">0</button>
-    <button @click="emit('number', '.')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">.</button>
-    <button @click="emit('equals')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">=</button>
-    <button @click="emit('operator', '+')"
-      class="p-4 text-xl cursor-pointer rounded border border-gray-300 bg-gray-100 hover:bg-gray-200">+</button>
+    <button @click="emit('number', '0')" :class="numBtnClass">0</button>
+    <button @click="emit('number', '.')" :class="numBtnClass">.</button>
+    <button @click="emit('equals')" :class="equalsBtnClass">=</button>
+    <button @click="emit('operator', '+')" :class="opBtnClass">+</button>
   </div>
 </template>
